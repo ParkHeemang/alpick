@@ -1,6 +1,6 @@
 package com.VO;
 
-public class memberVO {
+public class MemberVO {
 	
 	private String id;
 	private String pw;
@@ -70,7 +70,7 @@ public class memberVO {
 
 
 
-	public memberVO(String id, String pw, String nickname, String year, String user_type) {
+	public MemberVO(String id, String pw, String nickname, String year, String user_type) {
 		super();
 		this.id = id;
 		this.pw = pw;

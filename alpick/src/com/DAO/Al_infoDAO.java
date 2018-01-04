@@ -6,6 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.VO.Al_dictVO;
+import com.VO.Al_infoVO;
+
 public class Al_infoDAO {
 	
 	Connection conn = null;
@@ -75,5 +78,46 @@ public class Al_infoDAO {
 		close();
 		return cnt;
 	}
+	
+	
+	public Al_infoVO productIdSelect(String product_no) { // 정보가 없다면 null 리턴
+		getConn();
+		String sql = "select * from al_info where product_no=?";
+		Al_infoVO al_infoVO = null;
+
+		try {
+			pst = conn.prepareStatement(sql);
+			pst.setString(1, product_no);
+			rs = pst.executeQuery();
+
+			if (rs.next()) { // 결과값이 있으면은
+				String barcode = rs.getString(2);
+				String product_name = rs.getString(3);
+				String alcohol = rs.getString(4);
+				String price = rs.getString(5);
+				String volume = rs.getString(6);
+				
+				al_infoVO = new Al_infoVO(product_no,barcode, product_name, alcohol, price, volume);
+			} else {
+				System.out.println("memberDAO의 idselect 이게 뜨면 id로 검색한 결과 없는것인것");
+				return null;
+			}
+		} catch (SQLException e) {
+			System.out.println("memberDAO emailselect error");
+			e.printStackTrace();
+		}
+		close();
+		return al_infoVO;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

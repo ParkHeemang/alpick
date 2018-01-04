@@ -6,6 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.VO.Al_dictVO;
+import com.VO.MemberVO;
+
 public class Al_dictDAO {
 	
 	
@@ -73,6 +76,36 @@ public class Al_dictDAO {
 		close();
 		return cnt;
 	}
+	
+	// 아이디로 다른정보 가져오기
+		public Al_dictVO idSelect(String member_id) { // 정보가 없다면 null 리턴
+			getConn();
+			String sql = "select * from al_dict where member_id=?";
+			Al_dictVO al_dictVO = null;
+
+			try {
+				pst = conn.prepareStatement(sql);
+				pst.setString(1, member_id);
+				rs = pst.executeQuery();
+
+				if (rs.next()) { // 결과값이 있으면은
+					int sequence_no = rs.getInt(1);
+					String product_no = rs.getString(2);
+					String score = rs.getString(4);
+					String time = rs.getString(5);
+					
+					al_dictVO = new Al_dictVO(sequence_no, product_no, member_id, score, time);
+				} else {
+					System.out.println("memberDAO의 idselect 이게 뜨면 id로 검색한 결과 없는것인것");
+					return null;
+				}
+			} catch (SQLException e) {
+				System.out.println("memberDAO emailselect error");
+				e.printStackTrace();
+			}
+			close();
+			return al_dictVO;
+		}
 	
 	
 	

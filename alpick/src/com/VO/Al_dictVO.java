@@ -1,6 +1,6 @@
 package com.VO;
 
-public class al_dictVO {
+public class Al_dictVO {
 	
 	private int sequence_no;
 	private String product_no;
@@ -9,13 +9,14 @@ public class al_dictVO {
 	private String time;
 	
 	
-	public al_dictVO(int sequence_no, String product_no, String member_id, String score, String time) {
+	public Al_dictVO(int sequence_no, String product_no, String member_id, String score, String time) {
 		
 		this.sequence_no = sequence_no;
 		this.product_no = product_no;
 		this.member_id = member_id;
-		this.score = "0";
+		this.score = score;
 		this.time = time;
+		
 	}
 
 

@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 
-import com.VO.memberVO;
+import com.VO.MemberVO;
 
 public class MemberDAO {
 	Connection conn = null;
@@ -85,11 +85,11 @@ public class MemberDAO {
 		return cnt;
 	}
 
-	// 아이디로 개인정보 가져오기
-	public memberVO idSelect(String id) { // 정보가 없다면 null 리턴
+	// 아이디로 다른정보 가져오기
+	public MemberVO idSelect(String id) { // 정보가 없다면 null 리턴
 		getConn();
 		String sql = "select * from users where id=?";
-		memberVO mvo = null;
+		MemberVO mvo = null;
 
 		try {
 			pst = conn.prepareStatement(sql);
@@ -101,7 +101,7 @@ public class MemberDAO {
 				String nickname = rs.getString(3);
 				String year = rs.getString(4);
 				String user_type = rs.getString(5);
-				mvo = new memberVO(id, pw, nickname, year, user_type);
+				mvo = new MemberVO(id, pw, nickname, year, user_type);
 			} else {
 				System.out.println("memberDAO의 idselect 이게 뜨면 id로 검색한 결과 없는것인것");
 				return null;

@@ -1,6 +1,6 @@
 package com.VO;
 
-public class themeVO {
+public class ThemeVO {
 	
 	private String atmosphere;
 	private String place;
