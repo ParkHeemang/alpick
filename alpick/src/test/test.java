@@ -46,8 +46,32 @@ public class test {
 		String time = al_dictVO.getTime();
 		
 		System.out.println(sequence_no+"/"+product_no+"/"+member_id+"/"+score+"/"+time);*/
+	
 		
-		Al_infoVO al_infoVO = al_infoDAO.productIdSelect("1");
+		
+		
+		
+		
+/*		Al_infoVO al_infoVO = al_infoDAO.productIdSelect("1");
+		
+		String product_no = al_infoVO.getProduct_no();
+		String barcode  = al_infoVO.getBarcode();
+		String product_name  = al_infoVO.getProduct_name();
+		String alcohol  = al_infoVO.getAlcohol();
+		String price  = al_infoVO.getPrice();
+		String volume = al_infoVO.getVolume();
+		
+		
+		System.out.println(product_no+"/"+barcode+"/"+product_name+"/"+alcohol+"/"+price+"/"+volume);*/
+		
+		
+		
+		
+		
+		
+		
+/*
+		Al_infoVO al_infoVO = al_infoDAO.barcodeSelect("1234567890123");
 		
 		String product_no = al_infoVO.getProduct_no();
 		String barcode  = al_infoVO.getBarcode();
@@ -58,6 +82,77 @@ public class test {
 		
 		
 		System.out.println(product_no+"/"+barcode+"/"+product_name+"/"+alcohol+"/"+price+"/"+volume);
+		
+	*/
+		
+		
+		
+		//바코드를 찍는다(도감에 없는 경우)
+		//바코드값으로 alcohol_info table을 불러온다
+		String id = "park";
+		String barcode = "0000000000001";
+		
+		
+		Al_infoVO al_infoVO = al_infoDAO.barcodeSelect(barcode);
+		String product_no = al_infoVO.getProduct_no();
+		
+		String score;
+		score="4";
+		
+		if (score==null) {
+			score="0";
+		}
+		
+		al_dictDAO.dictInsert(product_no, id, score);
+		
+		
+	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		/*
+		//특히, product_no
+		String alcoholID = al_infoVO.getProduct_no();
+		
+		
+		//user의 id로 도감 테이블을 불러온다 , 여러개 나올텐데?
+		
+		
+		
+		Al_dictVO al_dictVO = al_dictDAO.idSelect("park");
+				
+				
+				
+		//
+		
+		//술의 고유 아이디로 
+		
+		*/
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		

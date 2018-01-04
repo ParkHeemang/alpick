@@ -30,5 +30,8 @@ select * from al_dict;
 
 
 insert into al_dict values(sequence_no.nextval,'1','park3','5',to_char(sysdate,'YYYY-MM-DD'));
-insert into al_info values('1','참이슬','30','3000','250')
+insert into al_info values('3','0000000000001','잎새주','35','3000','250')
+
+
+
 
