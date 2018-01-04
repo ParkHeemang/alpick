@@ -9,7 +9,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 
-public class memberDAO {
+import com.VO.memberVO;
+
+public class MemberDAO {
 	Connection conn = null;
 	PreparedStatement pst = null;
 	ResultSet rs = null;
@@ -94,7 +96,71 @@ public class memberDAO {
 		}
 	
 	
-	
+		//아이디로 개인정보 가져오기
+		public memberVO idSelect(String id) {                      //정보가 없다면 null 리턴
+			getConn();
+			String sql = "select * from users where id=?";
+			memberVO mvo = null;
+			
+			try {
+				pst = conn.prepareStatement(sql);
+				pst.setString(1, id);
+				rs = pst.executeQuery();
+				
+				if(rs.next()) {                           //결과값이 있으면은
+					String pw = rs.getString(2);
+					String nickname = rs.getString(3);
+					String year = rs.getString(4);
+					String user_type = rs.getString(5);
+					mvo = new memberVO(id, pw, nickname, year, user_type);
+				}else {
+					System.out.println("memberDAO의 emailselect 이게 뜨면 안되요");
+					return null;
+				}
+			} catch (SQLException e) {
+				System.out.println("memberDAO emailselect error");
+				e.printStackTrace();
+			} 
+			close();
+			return mvo;
+		}
+		
+		
+		public int updateUser_type(String id, String user_type) {
+			//유저 아이디로 유저성향 변경
+			getConn();
+			int cnt=-1;
+			try {
+				String sql = "select id from users where id=?";
+				pst = conn.prepareStatement(sql);
+				pst.setString(1, id);           //물음표 집어넣기
+				rs = pst.executeQuery();
+				
+				if(rs.next()) {                 //검색값이 있으면
+					String sql2 = "update users set user_type=? where id=?";
+				
+					pst = conn.prepareStatement(sql2);
+					pst.setString(1, user_type);
+					pst.setString(2, id);
+					
+					
+					cnt = pst.executeUpdate();
+				}								//검색값 없으면 -1 return
+				
+				
+				System.out.println(id+"의 user_type "+user_type+"으로 변경 완료");
+				System.out.println("cnt값:"+cnt);
+			} catch (SQLException e) {
+				System.out.println("memberDAO updateFavorite error");
+				e.printStackTrace();
+			} 
+			close();
+			return cnt;
+		}
+		
+		
+		
+
 	
 	
 	
