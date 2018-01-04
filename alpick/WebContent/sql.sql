@@ -8,9 +8,9 @@ create table theme(atmosphere varchar2(20) not null, place varchar2(20), with_wh
 
 
 
+select * from users
+insert into users values('park','1234','park','1992-05-19','AAAA');
 
 
-
-select * from theme
 
 
