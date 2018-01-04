@@ -17,21 +17,27 @@ public class memberDAO {
 	
 	public void getConn() {
 		
-		InputStream in = (this.getClass().getResourceAsStream("../../../../db.properties"));
+		/*InputStream in = (this.getClass().getResourceAsStream("../../../../db.properties"));
 		Properties p = new Properties();
 		try {
+			
+			System.out.println(p);
 			p.load(in);
 		} catch (IOException e1) {
 			System.out.println("memberDAO getConn properties errer");
 			e1.printStackTrace();
-		}
+		}*/
 		
-		String url = p.getProperty("dburl");
-		String dbid = p.getProperty("dbid");
-		String dbpw = p.getProperty("dbpw");
+		String url = "jdbc:oracle:thin:@127.0.0.1:1521:xe";
+		String dbid = "wcadmin";
+		String dbpw = "wcadmin";
+		
+		
+		
+				
 
 		try {
-			Class.forName(p.getProperty("dbclass"));
+			Class.forName("oracle.jdbc.driver.OracleDriver");
 		} catch (ClassNotFoundException e) {
 			System.out.println("memberDAO forName error");
 			e.printStackTrace();

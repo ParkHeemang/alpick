@@ -8,9 +8,10 @@ public class test {
 		
 		memberDAO memberDAO = new memberDAO();
 		
-		memberDAO.join("park1", "1234", "park1", "2018-01-04", "AAAA");
+		memberDAO.join("park3", "1234", "park3", "2018-01-04", "AAAA");
 		
 		
 	}
 
+	
 }
