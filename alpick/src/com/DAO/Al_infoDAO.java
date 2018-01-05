@@ -84,16 +84,20 @@ public class Al_infoDAO {
 	}
 	
 	public Al_infoVO productIdSelect(String product_no) { // 정보가 없다면 null 리턴
+		/* 술 정보 테이블에서 데이터 가져오는 코드 */
+		
 		getConn();
 		String sql = "select * from al_info where product_no=?";
 		Al_infoVO al_infoVO = null;
 
 		try {
+			
 			pst = conn.prepareStatement(sql);
 			pst.setString(1, product_no);
 			rs = pst.executeQuery();
 
 			if (rs.next()) { // 결과값이 있으면은
+			
 				String barcode = rs.getString(2);
 				String product_name = rs.getString(3);
 				String alcohol = rs.getString(4);
@@ -109,13 +113,15 @@ public class Al_infoDAO {
 			System.out.println("memberDAO emailselect error");
 			e.printStackTrace();
 		}
+		
 		close();
 		return al_infoVO;
+		
 	}
 	
-	
-	
 	public Al_infoVO barcodeSelect(String barcode) { // 정보가 없다면 null 리턴
+		/* 바코드 등록 여부 >> 술인지 아닌지를 판별하는 코드 */
+		
 		getConn();
 		String sql = "select * from al_info where barcode=?";
 		Al_infoVO al_infoVO = null;
@@ -141,17 +147,10 @@ public class Al_infoDAO {
 			System.out.println("memberDAO emailselect error");
 			e.printStackTrace();
 		}
+		
 		close();
 		return al_infoVO;
+		
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-
 }
