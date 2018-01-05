@@ -16,12 +16,15 @@ public class test {
 		Al_dictDAO al_dictDAO = new Al_dictDAO();
 		
 		
-		//memberDAO.join("park", "1234", "park", "2018-01-04", "AAAA");  //회원가입
+		//회원가입
+		//memberDAO.join("park", "1234", "park", "2018-01-04", "AAAA"); 
 		
 		
 		
+		//id로 회원 정보 불러오기
 		
-		/*memberVO memberVO = memberDAO.idSelect("park");       //회원 정보 불러오기
+		
+		/*memberVO memberVO = memberDAO.idSelect("park");       
 		
 		String id = memberVO.getId();
 		String pw = memberVO.getPw();
@@ -32,9 +35,18 @@ public class test {
 		System.out.println(id+"//"+pw+"//"+nickname+"//"+user_type+"//"+year);*/
 		
 		
+		
+		//술 info 추가
 		//al_infoDAO.infoInsert("1", "1234567890123","참이슬","35","3500", "250");
 		
-		//al_dictDAO.dictInsert("2", "kim","5");             //사전 row 추가 (product_no, memberid, score)
+		
+		
+		
+		//술 dict추가
+		//al_dictDAO.dictInsert("2", "kim","5");     //사전 row 추가 (product_no, memberid, score)
+		
+		
+		//회원 id로 술 dict불러오기
 		
 		
 		/*Al_dictVO al_dictVO = al_dictDAO.idSelect("park");
@@ -51,6 +63,7 @@ public class test {
 		
 		
 		
+		//술info product_no(술 id)로 다른 정보 불러오기
 		
 /*		Al_infoVO al_infoVO = al_infoDAO.productIdSelect("1");
 		
@@ -69,7 +82,7 @@ public class test {
 		
 		
 		
-		
+		//바코드(술 info)로 정보 불러오기
 /*
 		Al_infoVO al_infoVO = al_infoDAO.barcodeSelect("1234567890123");
 		

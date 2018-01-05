@@ -24,7 +24,7 @@ insert into users values('kim','1234','kim','1992-05-19','AAAA');
 select * from users
 select * from al_info;
 select * from al_dict;
-
+select * from theme
 
 
 
