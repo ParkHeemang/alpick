@@ -3,9 +3,11 @@ package test;
 import com.DAO.Al_dictDAO;
 import com.DAO.Al_infoDAO;
 import com.DAO.MemberDAO;
+import com.DAO.ThemeDAO;
 import com.VO.Al_dictVO;
 import com.VO.Al_infoVO;
 import com.VO.MemberVO;
+import com.VO.ThemeVO;
 
 public class test {
 
@@ -14,7 +16,7 @@ public class test {
 		MemberDAO memberDAO = new MemberDAO();		
 		Al_infoDAO al_infoDAO = new Al_infoDAO();
 		Al_dictDAO al_dictDAO = new Al_dictDAO();
-		
+		ThemeDAO themeDAO = new ThemeDAO();
 		
 		//회원가입
 		//memberDAO.join("park", "1234", "park", "2018-01-04", "AAAA"); 
@@ -99,7 +101,7 @@ public class test {
 	*/
 		
 		
-		
+		/*
 		//바코드를 찍는다(도감에 없는 경우)
 		//바코드값으로 alcohol_info table을 불러온다
 		String id = "park";
@@ -119,16 +121,14 @@ public class test {
 		al_dictDAO.dictInsert(product_no, id, score);
 		
 		
-	
+	*/
 		
 		
 		
 		
 		
 		
-		
-		
-		
+			
 		
 		
 		
@@ -156,6 +156,13 @@ public class test {
 		
 		
 		
+		
+		
+		ThemeVO themeVO = null;
+		
+		themeVO = themeDAO.product_NoSelect("2");
+		
+		System.out.println(themeVO.getAtmosphere()+" / "+themeVO.getPlace());
 		
 		
 		

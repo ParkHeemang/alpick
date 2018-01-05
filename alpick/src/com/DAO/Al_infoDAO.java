@@ -54,7 +54,7 @@ public class Al_infoDAO {
 		}
 	}
 	
-	public int infoInsert(String product_no, String barcode, String product_name, String alcohol, String price, String volume) {
+	public int infoInsert(String product_no, String barcode, String product_name, String alcohol, String price, String volume, String img_url) {
 		/* 술 정보 테이블에 정보 저장하는 코드 */
 		
 		getConn();
@@ -70,6 +70,7 @@ public class Al_infoDAO {
 			pst.setString(4, alcohol);
 			pst.setString(5, price);
 			pst.setString(6, volume);
+			pst.setString(7, img_url);
 			
 			cnt = pst.executeUpdate();
 
@@ -103,8 +104,11 @@ public class Al_infoDAO {
 				String alcohol = rs.getString(4);
 				String price = rs.getString(5);
 				String volume = rs.getString(6);
+				String img_url = rs.getString(7);
 				
-				al_infoVO = new Al_infoVO(product_no,barcode, product_name, alcohol, price, volume);
+				
+				
+				al_infoVO = new Al_infoVO(product_no, barcode, product_name, alcohol, price, volume, img_url);
 			} else {
 				System.out.println("memberDAO의 idselect 이게 뜨면 id로 검색한 결과 없는것인것");
 				return null;
@@ -137,8 +141,9 @@ public class Al_infoDAO {
 				String alcohol = rs.getString(4);
 				String price = rs.getString(5);
 				String volume = rs.getString(6);
+				String img_url = rs.getString(7);
 				
-				al_infoVO = new Al_infoVO(product_no,barcode, product_name, alcohol, price, volume);
+				al_infoVO = new Al_infoVO(product_no,barcode, product_name, alcohol, price, volume, img_url);
 			} else {
 				System.out.println("memberDAO의 idselect 이게 뜨면 id로 검색한 결과 없는것인것");
 				return null;

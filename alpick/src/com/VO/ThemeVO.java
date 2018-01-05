@@ -10,6 +10,14 @@ public class ThemeVO {
 	
 	
 	
+	public ThemeVO(String atmosphere, String place, String with_who, String anniversary, String product_no) {
+	
+		this.atmosphere = atmosphere;
+		this.place = place;
+		this.with_who = with_who;
+		this.anniversary = anniversary;
+		this.product_no = product_no;
+	}
 	public String getAtmosphere() {
 		return atmosphere;
 	}

@@ -8,9 +8,10 @@ public class Al_infoVO {
 	private String alcohol;
 	private String price;
 	private String volume;
+	private String img_url;
 	
 	public Al_infoVO(String product_no, String barcode, String product_name, String alcohol, String price,
-			String volume) {
+			String volume, String img_url) {
 		super();
 		this.product_no = product_no;
 		this.barcode = barcode;
@@ -18,6 +19,11 @@ public class Al_infoVO {
 		this.alcohol = alcohol;
 		this.price = price;
 		this.volume = volume;
+		this.img_url = img_url;
+	}
+	
+	public void setImg_url(String img_url) {
+		this.img_url = img_url;
 	}
 	
 	public void setProduct_no(String product_no) {
@@ -43,6 +49,13 @@ public class Al_infoVO {
 	public void setVolume(String volume) {
 		this.volume = volume;
 	}
+	
+	
+	
+	public String getImg_url(String img_url) {
+		return img_url;
+	}
+	
 	
 	public String getProduct_no() {
 		return product_no;
