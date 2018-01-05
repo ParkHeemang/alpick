@@ -83,8 +83,7 @@ public class MemberDAO {
 
 	public int login(String input_id, String input_pw) {
 
-		input_id = "park";
-		input_pw = "1234";
+		
 
 		MemberDAO memberdao = new MemberDAO();
 		MemberVO memberVO = memberdao.idSelect(input_id);
