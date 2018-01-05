@@ -12,9 +12,17 @@ import java.util.Properties;
 import com.VO.MemberVO;
 
 public class MemberDAO {
-	Connection conn = null;
-	PreparedStatement pst = null;
-	ResultSet rs = null;
+	/* USERS테이블에 접근하는 클래스 */
+	
+	private Connection conn = null;
+	private PreparedStatement pst = null;
+	private ResultSet rs = null;
+	private static MemberDAO instance = new MemberDAO();
+	
+	public static MemberDAO getInstance() {
+		// MemberDAO 인스턴스
+		return instance;
+	}
 
 	public void getConn() {
 		/* DB연결하는 메소드 */
@@ -82,29 +90,30 @@ public class MemberDAO {
 	}
 
 	public int login(String input_id, String input_pw) {
+		/* login판별 코드 */
 
+		getConn();
+		String sql = "select * from users where id=? and pw=?";
+		int cnt = -1;
 		
-
-		MemberDAO memberdao = new MemberDAO();
-		MemberVO memberVO = memberdao.idSelect(input_id);
-
-		if (memberVO != null) { // id유무 조회
-
-			if (memberVO.getPw().equals(input_pw)) { // 비번 대조
-
-				return 1;
-
+		try {
+			
+			pst = conn.prepareStatement(sql);
+			pst.setString(1, input_id);
+			pst.setString(2, input_pw);
+			
+			rs = pst.executeQuery();
+			
+			if(rs.next()) {
+				cnt = 1;
 			} else {
-
-				return 0;
-
+				cnt = 0;
 			}
-
-		} else {
-
-			System.out.println("없는 id입니다.");
-			return 0;
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
+		
+		return cnt;
 	}
 
 	// 아이디로 다른정보 가져오기

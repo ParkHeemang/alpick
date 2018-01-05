@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import com.VO.Al_dictVO;
 import com.VO.Al_infoVO;
@@ -14,7 +15,14 @@ public class Al_infoDAO {
 	Connection conn = null;
 	PreparedStatement pst = null;
 	ResultSet rs = null;
+	ArrayList<Al_infoVO> al_list = null;
+	private static Al_infoDAO instance = new Al_infoDAO();
 
+	public static Al_infoDAO getInstance() {
+		// Al_infoDAO 인스턴스
+		return instance;
+	}
+	
 	public void getConn() {
 		/* DB연결하는 코드 */
 
@@ -85,7 +93,7 @@ public class Al_infoDAO {
 	}
 	
 	public Al_infoVO productIdSelect(String product_no) { // 정보가 없다면 null 리턴
-		/* 술 정보 테이블에서 데이터 가져오는 코드 */
+		/* 술 정보 테이블에서 target데이터 가져오는 코드 */
 		
 		getConn();
 		String sql = "select * from al_info where product_no=?";
@@ -158,4 +166,30 @@ public class Al_infoDAO {
 		
 	}
 	
+	public ArrayList<Al_infoVO> selectAlInfo() {
+		/* 술 정보 테이블에서 모든 데이터를 가져오는 메소드 */
+		
+		getConn();
+		String sql = "select * from al_info";
+		
+		try {
+			pst = conn.prepareStatement(sql);
+			
+			rs = pst.executeQuery();
+			
+			al_list = new ArrayList<Al_infoVO>();
+			
+			while(rs.next()) {
+				al_list.add(new Al_infoVO(rs.getString(1), rs.getString(2), 
+						rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7)));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		close();
+		return al_list;
+	}
 }

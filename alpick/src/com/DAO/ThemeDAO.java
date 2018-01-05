@@ -11,7 +11,6 @@ import com.VO.ThemeVO;
 
 public class ThemeDAO {
 	
-	
 	Connection conn = null;
 	PreparedStatement pst = null;
 	ResultSet rs = null;
@@ -90,18 +89,6 @@ public class ThemeDAO {
 			close();
 			return themeVO;
 
-		}
-	
-	
-		
-		
-		
-	
-	
-	
-	
-	
-	
-	
+		}	
 
 }

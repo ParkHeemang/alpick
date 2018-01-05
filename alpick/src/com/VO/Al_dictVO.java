@@ -8,7 +8,6 @@ public class Al_dictVO {
 	private String score;
 	private String time;
 	
-	
 	public Al_dictVO(int sequence_no, String product_no, String member_id, String score, String time) {
 		
 		this.sequence_no = sequence_no;
