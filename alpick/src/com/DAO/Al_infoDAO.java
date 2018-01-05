@@ -16,12 +16,12 @@ public class Al_infoDAO {
 	ResultSet rs = null;
 
 	public void getConn() {
-
+		/* DB연결하는 코드 */
 
 		String url = "jdbc:oracle:thin:@127.0.0.1:1521:xe";
 		String dbid = "wcadmin";
 		String dbpw = "wcadmin";
-
+		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 		} catch (ClassNotFoundException e) {
@@ -39,6 +39,8 @@ public class Al_infoDAO {
 	}
 	
 	public void close() {
+		/* DB연결 해제하는 코드 */
+		
 		try {
 			if (rs != null)
 				rs.close();
@@ -52,14 +54,15 @@ public class Al_infoDAO {
 		}
 	}
 	
-	
-	
-	
 	public int infoInsert(String product_no, String barcode, String product_name, String alcohol, String price, String volume) {
+		/* 술 정보 테이블에 정보 저장하는 코드 */
+		
 		getConn();
 		String sql = "insert into al_info values(?,?,?,?,?,?)";
 		int cnt = -1;
+		
 		try {
+			
 			pst = conn.prepareStatement(sql);
 			pst.setString(1, product_no);
 			pst.setString(2, barcode);
@@ -68,17 +71,17 @@ public class Al_infoDAO {
 			pst.setString(5, price);
 			pst.setString(6, volume);
 			
-
 			cnt = pst.executeUpdate();
 
 		} catch (SQLException e) {
 			System.out.println("al_dictDAO join error");
 			e.printStackTrace();
 		}
+		
 		close();
 		return cnt;
+		
 	}
-	
 	
 	public Al_infoVO productIdSelect(String product_no) { // 정보가 없다면 null 리턴
 		getConn();
