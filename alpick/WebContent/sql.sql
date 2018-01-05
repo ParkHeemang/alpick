@@ -23,6 +23,7 @@ drop table users;
 
 insert into al_info values('2','1234567890124','카스','10','2000','500','urladress');
 insert into users values('park','1234','park','1992-05-19','AAAA');
+insert into theme values('친목','술집','오랜 친구',null,'2');
 
 
 select * from users;
