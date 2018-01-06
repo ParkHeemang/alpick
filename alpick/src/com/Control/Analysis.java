@@ -10,7 +10,7 @@ public class Analysis {
 	String url = "python C:\\Users\\aa\\Desktop\\PSFinal\\DataAnalysis";
 	String filename = "test.py";
 	
-	public void analysis(String id, String user_type) {
+	public StringBuffer analysis(String id, String user_type) {
 		
 		cmd = new StringBuffer();
 		output = new StringBuffer();
@@ -55,6 +55,8 @@ public class Analysis {
 		} catch(Exception e) {
 			System.out.println(e);
 		}
+		
+		return output;
 		
 	}
 
