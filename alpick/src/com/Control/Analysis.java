@@ -7,7 +7,7 @@ public class Analysis {
 	
 	StringBuffer cmd = null;
 	StringBuffer output = null;
-	String url = "python C:\\Users\\aa\\Desktop\\PSFinal\\DataAnalysis";
+	String url = "python C:\\Users\\pc-11\\Desktop";
 	String filename = "test.py";
 	
 	public StringBuffer analysis(String id, String user_type) {

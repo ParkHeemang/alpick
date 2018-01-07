@@ -9,7 +9,6 @@ create table theme(atmosphere varchar2(20) not null, place varchar2(20), with_wh
 create sequence sequence_no start with 1 increment by 1;
 
 
-drop sequence sequence_no;
 
 
 
@@ -17,6 +16,7 @@ drop table theme;
 drop table al_dict;
 drop table al_info;
 drop table users;
+drop sequence sequence_no;
 
 
 

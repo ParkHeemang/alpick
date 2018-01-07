@@ -67,7 +67,7 @@ public class test {
 		
 		//술info product_no(술 id)로 다른 정보 불러오기
 		
-/*		Al_infoVO al_infoVO = al_infoDAO.productIdSelect("1");
+		Al_infoVO al_infoVO = al_infoDAO.productIdSelect("01_0001");
 		
 		String product_no = al_infoVO.getProduct_no();
 		String barcode  = al_infoVO.getBarcode();
@@ -77,7 +77,7 @@ public class test {
 		String volume = al_infoVO.getVolume();
 		
 		
-		System.out.println(product_no+"/"+barcode+"/"+product_name+"/"+alcohol+"/"+price+"/"+volume);*/
+		System.out.println(product_no+"/"+barcode+"/"+product_name+"/"+alcohol+"/"+price+"/"+volume);
 		
 		
 		
@@ -158,12 +158,12 @@ public class test {
 		
 		
 		
-		ThemeVO themeVO = null;
+	/*	ThemeVO themeVO = null;
 		
 		themeVO = themeDAO.product_NoSelect("2");
 		
 		System.out.println(themeVO.getAtmosphere()+" / "+themeVO.getPlace());
-		
+		*/
 		
 		
 		
