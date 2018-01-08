@@ -1,5 +1,7 @@
 package com.DAO;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -166,7 +168,7 @@ public class Al_infoDAO {
 		
 	}
 	
-	public ArrayList<Al_infoVO> selectAlInfo() {
+	public ArrayList<Al_infoVO> selectAlInfo() throws UnsupportedEncodingException {
 		/* 술 정보 테이블에서 모든 데이터를 가져오는 메소드 */
 		
 		getConn();
@@ -181,7 +183,7 @@ public class Al_infoDAO {
 			
 			while(rs.next()) {
 				al_list.add(new Al_infoVO(rs.getString(1), rs.getString(2), 
-						rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7)));
+						URLEncoder.encode(rs.getString(3),"euc-kr"), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7)));
 			}
 			
 		} catch (SQLException e) {
