@@ -44,37 +44,16 @@ public class LoginSuccess extends HttpServlet {
 
 				gson = new Gson();
 
-				String temp = null;
-				
-				for (int i = 0; i < info_list.size(); i++) {
-					temp += gson.toJson(info_list.get(i));
-				}
+				info_result = gson.toJson(info_list);
+				dic_result = gson.toJson(dic_list);
 
-				info_result = gson.toJson(temp);
-
-				temp = null;
-				for (int i = 0; i < dic_list.size(); i++) {
-					temp += gson.toJson(dic_list.get(i));
-				}
-				
-				dic_result = gson.toJson(temp);
-				
 			} else if (info_list != null && dic_list == null) {
-				
+
 				gson = new Gson();
 
-				String temp = null;
-
-				for (int i = 0; i < info_list.size(); i++) {
-					temp += gson.toJson(info_list.get(i));
-				}
-
-				info_result = gson.toJson(temp);
-				dic_result = "";
-				
 			} else {
-				info_result = "InfoDataError";
-				dic_result = "DicDataError";
+				info_result = "Data1Error";
+				dic_result = "Data2Error";
 			}
 
 			response.getWriter().print(info_result+" "+dic_result);
