@@ -18,10 +18,10 @@ public class JoinService extends HttpServlet {
 		request.setCharacterEncoding("euc-kr");
 		response.setContentType("text/html; charset=euc-kr");
 
-		String id = "ask";
-		String pw = "ask123";
-		String nickname = "ksa";
-		String year = "123456";
+		String id = request.getParameter("id");
+		String pw = request.getParameter("pw");
+		String nickname = request.getParameter("nickname");
+		String year = request.getParameter("year");
 
 		MemberDAO dao = MemberDAO.getInstance();
 
@@ -29,7 +29,9 @@ public class JoinService extends HttpServlet {
 			int cnt = dao.join(id, pw, nickname, year);
 
 			if (cnt > 0) {
-				response.sendRedirect("main/main.jsp");
+				response.getWriter().print("1");
+			} else {
+				response.getWriter().print("-1");
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

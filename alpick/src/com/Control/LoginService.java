@@ -40,6 +40,8 @@ public class LoginService extends HttpServlet {
 			if (cnt > 0) {
 				// 로그인이 성공하면 >> 술 정보, 도감 데이터도 같이 전송해야 함
 				response.sendRedirect("LoginSuccess?id=" + id);
+			} else {
+				response.getWriter().print("-1");
 			}
 		} catch (Exception e) {
 			System.out.println(e);
