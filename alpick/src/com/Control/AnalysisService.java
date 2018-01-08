@@ -12,6 +12,15 @@ public class AnalysisService extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		
+		
+	}
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		request.setCharacterEncoding("euc-kr");
+		response.setContentType("text/html; charset=euc-kr");
+		
 		String id = request.getParameter("id");
 		String user_type = request.getParameter("user_type");
 		

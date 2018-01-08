@@ -13,18 +13,22 @@ import com.VO.MemberVO;
 @WebServlet("/JoinService")
 public class JoinService extends HttpServlet {
 
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.setCharacterEncoding("euc-kr");
+		response.setContentType("text/html; charset=euc-kr");
+
 		String id = "ask";
 		String pw = "ask123";
 		String nickname = "ksa";
 		String year = "123456";
-		
+
 		MemberDAO dao = MemberDAO.getInstance();
-		
+
 		try {
 			int cnt = dao.join(id, pw, nickname, year);
-			
-			if(cnt > 0) {
+
+			if (cnt > 0) {
 				response.sendRedirect("main/main.jsp");
 			}
 		} catch (Exception e) {
