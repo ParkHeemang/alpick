@@ -28,8 +28,8 @@ public class MemberDAO {
 		/* DB연결하는 메소드 */
 
 		String url = "jdbc:oracle:thin:@127.0.0.1:1521:xe";
-		String dbid = "wcadmin";
-		String dbpw = "wcadmin";
+		String dbid = "smart4";
+		String dbpw = "smart4";
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
