@@ -69,6 +69,10 @@ public class LoginSuccess extends HttpServlet {
 				dic_result = "Data2Error";
 			}
 			
+			System.out.println(info_list.toString());
+			System.out.println(dic_list.toString());
+			System.out.println(user_info.toString());
+			
 			response.getWriter().print("1---"+info_result+"---"+dic_result+"---"+user_info);
 
 		} catch (Exception e) {
