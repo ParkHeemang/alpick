@@ -23,6 +23,11 @@ public class JoinService extends HttpServlet {
 		String pw = request.getParameter("pw");
 		String nickname = request.getParameter("nickname");
 		String year = request.getParameter("year");
+		
+		System.out.println(id);
+		System.out.println(pw);
+		System.out.println(nickname);
+		System.out.println(year);
 
 		MemberDAO dao = MemberDAO.getInstance();
 		Gson gson = new Gson();
