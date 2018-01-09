@@ -29,17 +29,13 @@ public class AnalysisService extends HttpServlet {
 		
 		Analysis ana = new Analysis();
 		
-		StringBuffer temp = ana.analysis(id, user_type);
+		String temp = ana.analysis(id, user_type);
 		
 		if(result.toString().equals("")) {
 			/* 분석 결과 실패 시 */
 			response.getWriter().print("-1");
 		} else {
 			/* 분석 결과 성공 시 */
-			
-			Gson gson = new Gson();
-			
-			result = gson.toJson(temp);
 			
 			response.getWriter().print("1---"+result);
 		}

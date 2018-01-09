@@ -10,7 +10,7 @@ public class Analysis {
 	String url = "python C:";
 	String filename = "selectData.py";
 	
-	public StringBuffer analysis(String id, String user_type) {
+	public String analysis(String id, String user_type) {
 		
 		cmd = new StringBuffer();
 		output = new StringBuffer();
@@ -56,7 +56,7 @@ public class Analysis {
 			System.out.println(e);
 		}
 		
-		return output;
+		return output.toString();
 		
 	}
 
