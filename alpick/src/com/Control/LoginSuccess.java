@@ -32,6 +32,7 @@ public class LoginSuccess extends HttpServlet {
 		MemberVO mvo = null;
 		String info_result = null;
 		String dic_result = null;
+		String user_info = null;
 
 		Gson gson = null;
 
@@ -53,10 +54,15 @@ public class LoginSuccess extends HttpServlet {
 
 				info_result = gson.toJson(info_list);
 				dic_result = gson.toJson(dic_list);
+				user_info = gson.toJson(mvo);
+				
 
 			} else if (info_list != null && dic_list == null) {
 
 				gson = new Gson();
+				
+				info_result = gson.toJson(info_list);
+				user_info = gson.toJson(mvo);
 
 			} else {
 				info_result = "Data1Error";
@@ -66,7 +72,7 @@ public class LoginSuccess extends HttpServlet {
 			System.out.println(info_result);
 			System.out.println(dic_result);
 			
-			response.getWriter().print("1---"+info_result+"---"+dic_result+"---"+mvo.getNickname());
+			response.getWriter().print("1---"+info_result+"---"+dic_result+"---"+user_info);
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
