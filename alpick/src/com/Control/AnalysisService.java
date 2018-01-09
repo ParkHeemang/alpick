@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+
 @WebServlet("/AnalysisService")
 public class AnalysisService extends HttpServlet {
 
@@ -23,16 +25,22 @@ public class AnalysisService extends HttpServlet {
 		
 		String id = request.getParameter("id");
 		String user_type = request.getParameter("user_type");
+		String result = null;
 		
 		Analysis ana = new Analysis();
 		
-		StringBuffer result = ana.analysis(id, user_type);
+		StringBuffer temp = ana.analysis(id, user_type);
 		
 		if(result.toString().equals("")) {
 			/* 분석 결과 실패 시 */
 			response.getWriter().print("-1");
 		} else {
 			/* 분석 결과 성공 시 */
+			
+			Gson gson = new Gson();
+			
+			result = gson.toJson(temp);
+			
 			response.getWriter().print("1---"+result);
 		}
 		
