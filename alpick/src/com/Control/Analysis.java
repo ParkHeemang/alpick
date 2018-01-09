@@ -56,6 +56,8 @@ public class Analysis {
 			System.out.println(e);
 		}
 		
+		System.out.println(output.toString());
+		
 		return output.toString();
 		
 	}

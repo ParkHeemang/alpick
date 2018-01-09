@@ -31,6 +31,9 @@ public class FisrtDict extends HttpServlet {
 		String dic_temp = null;
 		String mem_temp = null;
 		
+		System.out.println(id);
+		System.out.println(dic_list.toString());
+		
 		Al_dictDAO dic_dao = Al_dictDAO.getInstance();
 		String result = "0";
 		
@@ -51,7 +54,7 @@ public class FisrtDict extends HttpServlet {
 			result = "-1";
 		}
 		
-		response.getWriter().print(result+"---"+dic_temp+"---"+mem_temp);
+		response.getWriter().print("1"+"---"+dic_temp+"---"+mem_temp);
 		
 	}
 
