@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.DAO.Al_dictDAO;
 import com.DAO.Al_infoDAO;
+import com.DAO.MemberDAO;
 import com.VO.Al_dictVO;
 import com.VO.Al_infoVO;
+import com.VO.MemberVO;
 import com.google.gson.Gson;
 
 @WebServlet("/LoginSuccess")
@@ -27,6 +29,7 @@ public class LoginSuccess extends HttpServlet {
 
 		ArrayList<Al_infoVO> info_list = null;
 		ArrayList<Al_dictVO> dic_list = null;
+		MemberVO mvo = null;
 		String info_result = null;
 		String dic_result = null;
 
@@ -34,11 +37,15 @@ public class LoginSuccess extends HttpServlet {
 
 		Al_infoDAO info_dao = Al_infoDAO.getInstance();
 		Al_dictDAO dic_dao = Al_dictDAO.getInstance();
+		MemberDAO mem_dao = MemberDAO.getInstance();
+		
+		String nick = null;
 
 		try {
-
+			
 			info_list = info_dao.selectAlInfo();
 			dic_list = dic_dao.idSelect(id);
+			mvo = mem_dao.idSelect(id);
 
 			if (info_list != null && dic_list != null) {
 
@@ -60,7 +67,7 @@ public class LoginSuccess extends HttpServlet {
 			System.out.println(info_result);
 			System.out.println(dic_result);
 			
-			response.getWriter().print("1---"+info_result+"---"+dic_result);
+			response.getWriter().print("1---"+info_result+"---"+dic_result+"---"+mvo.getNickname());
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
