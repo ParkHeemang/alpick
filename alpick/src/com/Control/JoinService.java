@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.DAO.MemberDAO;
 import com.VO.MemberVO;
+import com.google.gson.Gson;
 
 @WebServlet("/JoinService")
 public class JoinService extends HttpServlet {
@@ -29,7 +30,12 @@ public class JoinService extends HttpServlet {
 			int cnt = dao.join(id, pw, nickname, year);
 
 			if (cnt > 0) {
-				response.getWriter().print("1");
+				
+				Gson gson = new Gson();
+				
+				String result = gson.toJson("1");
+				
+				response.getWriter().print(result);
 			} else {
 				response.getWriter().print("-1");
 			}
