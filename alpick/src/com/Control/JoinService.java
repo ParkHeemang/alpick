@@ -25,20 +25,21 @@ public class JoinService extends HttpServlet {
 		String year = request.getParameter("year");
 
 		MemberDAO dao = MemberDAO.getInstance();
+		Gson gson = new Gson();
 
 		try {
 			int cnt = dao.join(id, pw, nickname, year);
-
+			String result = "-1";
 			if (cnt > 0) {
 				
-				Gson gson = new Gson();
+				result = "1";
+				result = gson.toJson(result);
 				
-				String result = gson.toJson("1");
-				
-				response.getWriter().print(result);
 			} else {
-				response.getWriter().print("-1");
+				result = "0";
+				result = gson.toJson(result);
 			}
+			response.getWriter().print(result);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
