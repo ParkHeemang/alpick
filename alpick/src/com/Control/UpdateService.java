@@ -27,7 +27,7 @@ public class UpdateService extends HttpServlet {
 			
 			if(cnt > 0) {
 				// 업데이트 성공 시
-				response.getWriter().print("1");
+				response.sendRedirect("AnalysisService?id="+id+"&user_type="+user_type);
 				
 			} else {
 				// 업데이트 실패 시

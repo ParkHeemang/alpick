@@ -33,7 +33,7 @@ public class AnalysisService extends HttpServlet {
 			response.getWriter().print("-1");
 		} else {
 			/* 분석 결과 성공 시 */
-			response.getWriter().print(result);
+			response.getWriter().print("1---"+result);
 		}
 		
 	}
