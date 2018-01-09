@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.DAO.Al_dictDAO;
+import com.DAO.MemberDAO;
 import com.VO.Al_dictVO;
+import com.VO.MemberVO;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -24,7 +26,10 @@ public class FisrtDict extends HttpServlet {
 		String id = request.getParameter("id");
 		ArrayList<Al_dictVO> dic_list = gson.fromJson(request.getParameter("dic_list"), new TypeToken<ArrayList<Al_dictVO>>() {}.getType());
 		ArrayList<Al_dictVO> dic_response = null;
+		MemberDAO mem_dao = MemberDAO.getInstance();
+		MemberVO mvo = null;
 		String dic_temp = null;
+		String mem_temp = null;
 		
 		Al_dictDAO dic_dao = Al_dictDAO.getInstance();
 		String result = "0";
@@ -35,6 +40,8 @@ public class FisrtDict extends HttpServlet {
 				dic_dao.dictInsert(dic_list.get(i).getProduct_no(), id, dic_list.get(i).getScore());
 			}
 			
+			mvo = mem_dao.idSelect(id);
+			mem_temp = gson.toJson(mvo);
 			dic_response = dic_dao.idSelect(id);
 			dic_temp = gson.toJson(dic_response);
 			
@@ -44,7 +51,7 @@ public class FisrtDict extends HttpServlet {
 			result = "-1";
 		}
 		
-		response.getWriter().print(result+"---"+dic_temp);
+		response.getWriter().print(result+"---"+dic_temp+"---"+mem_temp);
 		
 	}
 
