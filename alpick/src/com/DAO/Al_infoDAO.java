@@ -133,7 +133,7 @@ public class Al_infoDAO {
 		
 	}
 	
-	public Al_infoVO barcodeSelect(String barcode) { // 정보가 없다면 null 리턴
+	public Al_infoVO barcodeSelect(String barcode) throws UnsupportedEncodingException { // 정보가 없다면 null 리턴
 		/* 바코드 등록 여부 >> 술인지 아닌지를 판별하는 코드 */
 		
 		getConn();
@@ -146,14 +146,8 @@ public class Al_infoDAO {
 			rs = pst.executeQuery();
 
 			if (rs.next()) { // 결과값이 있으면은
-				String product_no = rs.getString(1);
-				String product_name = rs.getString(3);
-				String alcohol = rs.getString(4);
-				String price = rs.getString(5);
-				String volume = rs.getString(6);
-				String img_url = rs.getString(7);
-				
-				al_infoVO = new Al_infoVO(product_no,barcode, product_name, alcohol, price, volume, img_url);
+				al_infoVO = new Al_infoVO(rs.getString(1), rs.getString(2), URLEncoder.encode(rs.getString(3),"euc-kr"), 
+						rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));
 			} else {
 				System.out.println("memberDAO의 idselect 이게 뜨면 id로 검색한 결과 없는것인것");
 				return null;
