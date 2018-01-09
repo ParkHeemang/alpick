@@ -56,10 +56,11 @@ public class LoginSuccess extends HttpServlet {
 				dic_result = "Data2Error";
 			}
 
+			
 			System.out.println(info_result);
 			System.out.println(dic_result);
 			
-			response.getWriter().print(info_result+"---"+dic_result);
+			response.getWriter().print("1---"+info_result+"---"+dic_result);
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
