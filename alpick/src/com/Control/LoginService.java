@@ -29,9 +29,6 @@ public class LoginService extends HttpServlet {
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 
-		System.out.println(id);
-		System.out.println(pw);
-
 		MemberDAO member_dao = MemberDAO.getInstance();
 
 		try {
